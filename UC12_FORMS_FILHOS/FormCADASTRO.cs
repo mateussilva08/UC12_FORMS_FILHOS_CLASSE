@@ -16,5 +16,12 @@ namespace UC12_FORMS_FILHOS
         {
             InitializeComponent();
         }
+
+    
+
+        private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

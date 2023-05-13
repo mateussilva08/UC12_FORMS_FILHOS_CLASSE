@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace UC12_FORMS_FILHOS
 {
@@ -19,18 +20,35 @@ namespace UC12_FORMS_FILHOS
 
         private void buttonENTRAR_Click(object sender, EventArgs e)
         {
-            ClassVARIAVEIS.usuario = textBoxUSUARIO.Text;
+            try
+            {
+                ClassMYSQL.conexao.Open();
+                ClassMYSQL.comando.CommandText = "SELECT * FROM tbl_usuarios WHERE usuario = '" + textBoxUSUARIO.Text + "' AND senha = '" + textBoxSENHA.Text + "';";
+                MySqlDataReader readaerLOGIN = ClassMYSQL.comando.ExecuteReader();
+                if (readaerLOGIN.Read())
+                {
+                    ClassVARIAVEIS.usuario = readaerLOGIN["usuario"].ToString();
+                    ClassVARIAVEIS.permissao = readaerLOGIN["permissao"].ToString();
 
-            if (CheckBoxADM.Checked)
-            {
-                ClassVARIAVEIS.permissao = "admin";
+                    Form telaPRINCIPAL = new FormPRINCIPAL();
+                    telaPRINCIPAL.Show();
+                }
+                else
+                {
+                    MessageBox.Show("usuario e/ou senha incorretos");
+                }
+               
+
             }
-            else
+            catch (Exception erro)
             {
-                ClassVARIAVEIS.usuario = "user";
+                MessageBox.Show(erro.Message);
             }
-            Form telaPRINCIPAL = new FormPRINCIPAL();
-            telaPRINCIPAL.Show();
+            finally
+            {
+                ClassMYSQL.conexao.Close();
+            }
+           
         }
     }
 }

@@ -112,6 +112,12 @@
     <Compile Include="FormRELATORIO.Designer.cs">
       <DependentUpon>FormRELATORIO.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUSUARIO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUSUARIO.Designer.cs">
+      <DependentUpon>FormUSUARIO.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormCADASTRO.resx">
@@ -125,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormRELATORIO.resx">
       <DependentUpon>FormRELATORIO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUSUARIO.resx">
+      <DependentUpon>FormUSUARIO.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

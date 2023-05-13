@@ -42,6 +42,12 @@ namespace UC12_FORMS_FILHOS
             telaCADASTRO.Show();
             telaCADASTRO.WindowState = FormWindowState.Maximized;
 
+            Form telaUSUARIO = new FormUSUARIO();
+
+            telaUSUARIO.MdiParent = this;
+            telaUSUARIO.Show();
+            telaUSUARIO.WindowState = FormWindowState.Maximized;
+
 
         }
 
@@ -51,6 +57,11 @@ namespace UC12_FORMS_FILHOS
             telaRELATORIO.MdiParent = this;
             telaRELATORIO.Show();
             telaRELATORIO.WindowState = FormWindowState.Maximized;
+
+        }
+
+        private void FormPRINCIPAL_Load(object sender, EventArgs e)
+        {
 
         }
     }

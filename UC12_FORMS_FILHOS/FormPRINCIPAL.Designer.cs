@@ -74,6 +74,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormPRINCIPAL";
             this.Text = "Principal";
+            this.Load += new System.EventHandler(this.FormPRINCIPAL_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
