@@ -28,8 +28,7 @@ namespace UC12_FORMS_FILHOS
 
                 var bt = (Button)sender;
 
-                if (textBoxSENHA.Length < Tamanhominimo)
-                    textBoxSENHA.Text += bt.Tag.ToString();
+               
 
                 string admin = "";
                 if (radioButtonADM.Checked)
@@ -48,11 +47,12 @@ namespace UC12_FORMS_FILHOS
                     ClassMYSQL.conexao.Open();
                     ClassMYSQL.comando.CommandText = "INSERT INTO tbl_usuarios (permissao, usuario, senha) VALUES ('" + admin + "', '" + textBoxUSUARIO.Text + "', '" + textBoxSENHA.Text + "');";
 
-                    if (textBoxSENHA.Text > tamanhominimo)
+                    if (textBoxSENHA.Text.Length < Tamanhominimo)
                     {
-
+                       // textBoxSENHA.Text += bt.Tag.ToString();
+                        MessageBox.Show("minimo de 8 caracters");
                     }
-                    
+
                     if (textBoxSENHA.Text == textBoxCOMFIRMARSENHA.Text)
                     {
                         MySqlDataReader readaerLOGIN = ClassMYSQL.comando.ExecuteReader();
