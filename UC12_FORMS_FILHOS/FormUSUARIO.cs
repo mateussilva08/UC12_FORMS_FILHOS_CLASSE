@@ -21,15 +21,9 @@ namespace UC12_FORMS_FILHOS
         private void buttonCADASTRAR_Click(object sender, EventArgs e)
         {
 
-
             try
             {
-                const int Tamanhominimo = 8;
-
-                var bt = (Button)sender;
-
                
-
                 string admin = "";
                 if (radioButtonADM.Checked)
                 {
@@ -47,27 +41,34 @@ namespace UC12_FORMS_FILHOS
                     ClassMYSQL.conexao.Open();
                     ClassMYSQL.comando.CommandText = "INSERT INTO tbl_usuarios (permissao, usuario, senha) VALUES ('" + admin + "', '" + textBoxUSUARIO.Text + "', '" + textBoxSENHA.Text + "');";
 
-                    if (textBoxSENHA.Text.Length < Tamanhominimo)
-                    {
-                       // textBoxSENHA.Text += bt.Tag.ToString();
-                        MessageBox.Show("minimo de 8 caracters");
-                    }
+                    
 
                     if (textBoxSENHA.Text == textBoxCOMFIRMARSENHA.Text)
                     {
-                        MySqlDataReader readaerLOGIN = ClassMYSQL.comando.ExecuteReader();
+                        if (textBoxSENHA.Text.Length >= 8)
+                        {
+                            MySqlDataReader readaerLOGIN = ClassMYSQL.comando.ExecuteReader();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Minimo de 8 caracteres");
+                        }
+                       
+                       
                     }
+
                     else
                     {
                         MessageBox.Show("As senhas precisam ser iguais");
                     }
-                    
+                   
 
-                } else
+                }
+                else
                 {
                     MessageBox.Show("Campos em branco");
                 }
-
+               
             }
 
             catch (Exception erro)
